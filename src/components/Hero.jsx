@@ -11,7 +11,10 @@ export const Hero = () => {
   const rightTreesRef = useRef(null);
   const mainTextRef = useRef(null);
   const kidsRef = useRef(null);
-  const abhyudayRef = useRef(null);
+  const blackOverlayRef = useRef(null);
+  const abhyudayWrapperRef = useRef(null);
+  const abhyudayBgRef = useRef(null);
+  const abhyudayImageRef = useRef(null);
 
   useEffect(() => {
     const container = pinContainerRef.current;
@@ -86,20 +89,44 @@ export const Hero = () => {
       },
     });
 
-    gsap.set(abhyudayRef.current, {
-      xPercent: -150,
-      yPercent: 150,
-      scale: 55,
+    gsap.to(blackOverlayRef.current, {
+      opacity: 1,
+      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      scrollTrigger: {
+        trigger: container,
+        start: 350,
+        end: 900,
+        scrub: true,
+      },
     });
 
-    gsap.to(abhyudayRef.current, {
+    gsap.set(abhyudayWrapperRef.current, {
+      scale: 80,
+      xPercent: -190,
+      yPercent: -50,
+    });
+    gsap.set(abhyudayBgRef.current, {
+      opacity: 0,
+    });
+
+    gsap.to(abhyudayWrapperRef.current, {
       scale: 1,
       xPercent: -50,
       ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
       scrollTrigger: {
         trigger: container,
         start: 300,
-        end: 600,
+        end: 900,
+        scrub: true,
+      },
+    });
+    gsap.to(abhyudayBgRef.current, {
+      opacity: 1,
+      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      scrollTrigger: {
+        trigger: container,
+        start: 500,
+        end: 900,
         scrub: true,
       },
     });
@@ -110,16 +137,23 @@ export const Hero = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden" style={{ position: "relative" }}>
+    <div className="overflow-hidden relative" style={{ position: "relative" }}>
+      {/* Absolute background */}
+
       <div
         ref={pinContainerRef}
+        className="relative z-10"
         style={{
           height: "100vh",
-          position: "relative",
           width: "100%",
           overflow: "hidden",
         }}
       >
+        <div
+          ref={blackOverlayRef}
+          className="w-screen h-screen absolute top-0 left-0 bg-black z-11 opacity-0"
+        />
+        {/* Background image */}
         <img
           ref={heroImageRef}
           src="/strange-bg-sans-trees.png"
@@ -130,56 +164,99 @@ export const Hero = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            zIndex: 1,
           }}
         />
 
+        {/* Left trees */}
         <img
           ref={leftTreesRef}
           src="/trees-left.png"
           alt=""
           style={{
+            position: "absolute",
+            top: 0,
             height: "100%",
             width: "auto",
             maxWidth: "none",
+            zIndex: 3,
           }}
-          className="absolute top-0 ml-[-650px] sm:ml-[-700px] md:ml-[-650px] lg:ml-[-600px] xl:ml-[-500px] 2xl:ml-[-350px] 3xl:ml-[-350px]"
+          className="ml-[-650px] sm:ml-[-700px] md:ml-[-650px] lg:ml-[-600px] xl:ml-[-500px] 2xl:ml-[-350px] 3xl:ml-[-350px]"
         />
+
+        {/* Right trees */}
         <img
           ref={rightTreesRef}
           src="/trees-right.png"
           alt=""
           style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
             height: "100%",
             width: "auto",
             maxWidth: "none",
+            zIndex: 3,
           }}
-          className="absolute top-0 right-0 mr-[-650px] sm:mr-[-700px] md:mr-[-650px] lg:mr-[-600px] xl:mr-[-500px] 2xl:mr-[-350px] 3xl:mr-[-350px]"
+          className="mr-[-650px] sm:mr-[-700px] md:mr-[-650px] lg:mr-[-600px] xl:mr-[-500px] 2xl:mr-[-350px] 3xl:mr-[-350px]"
         />
 
+        {/* Main text */}
         <div
           ref={mainTextRef}
           className="absolute w-full top-[10%] text-white text-center"
+          style={{
+            zIndex: 4,
+          }}
         >
           <p className="tracking-wider text-sm">WELCOME TO THE</p>
+
           <h1 className="font-bold text-4xl">
             UPSIDE <span>DOWN</span>
           </h1>
+
           <p className="tracking-wider text-sm">MCA, MSRIT</p>
         </div>
 
-        <img
-          ref={abhyudayRef}
-          src="/abhyuday.svg"
-          alt="Abhyuday"
-          className="absolute left-1/2 z-1"
-        />
-
+        {/* Kids */}
         <img
           ref={kidsRef}
           src="/strange-kids.png"
           alt="Kids"
           className="absolute bottom-0 left-1/2 -translate-x-1/2 scale-120 min-w-[1200px]"
+          style={{
+            zIndex: 5,
+          }}
         />
+
+        {/* Abhyuday wrapper */}
+        <div
+          ref={abhyudayWrapperRef}
+          className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 inline-block"
+          style={{
+            zIndex: 12,
+          }}
+        >
+          {/* White background */}
+          <div
+            ref={abhyudayBgRef}
+            className="absolute inset-0 bg-white mx-auto my-auto"
+            style={{
+              zIndex: 1,
+              borderRadius: "8px",
+              width: "99%",
+              height: "99%",
+            }}
+          />
+
+          {/* SVG */}
+          <img
+            ref={abhyudayImageRef}
+            src="/abhyuday_new.svg"
+            alt="Abhyuday"
+            className="relative z-[2] w-auto h-auto max-w-[90vw]"
+          />
+        </div>
       </div>
 
       <div style={{ height: "1px" }} />
