@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/Outfit/Outfit-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+html {
+  overscroll-behavior-y: none;
+  font-family: "Outfit", sans-serif;
+}
