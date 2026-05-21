@@ -15,6 +15,8 @@ export const Hero = () => {
   const abhyudayWrapperRef = useRef(null);
   const abhyudayBgRef = useRef(null);
   const abhyudayImageRef = useRef(null);
+  const abhyudayTenRef = useRef(null);
+  const dateRef = useRef(null);
 
   useEffect(() => {
     const container = pinContainerRef.current;
@@ -131,6 +133,55 @@ export const Hero = () => {
       },
     });
 
+    gsap.set(abhyudayTenRef.current, {
+      xPercent: -50,
+      y: -35, // move up
+      left: "50%",
+      top: "100%",
+      opacity: 0,
+      scale: 1.1,
+    });
+    gsap.set(dateRef.current, {
+      xPercent: -50,
+      opacity: 0,
+      y: 140, // move up
+    });
+
+    gsap.to([abhyudayTenRef.current, dateRef.current], {
+      opacity: 1,
+      scale: 1,
+      stagger: 1,
+      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      scrollTrigger: {
+        trigger: container,
+        start: 900,
+        end: 1100,
+        scrub: true,
+      },
+    });
+    gsap.to(abhyudayTenRef.current, {
+      color: "red", // move down to original position
+      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      scrollTrigger: {
+        trigger: container,
+        start: 1000,
+        end: 1400,
+        scrub: true,
+      },
+    });
+
+    gsap.to(abhyudayWrapperRef.current, {
+      opacity: 0,
+      y: 10,
+      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      scrollTrigger: {
+        trigger: container,
+        start: 1400,
+        end: 1800,
+        scrub: true,
+      },
+    });
+
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -151,7 +202,7 @@ export const Hero = () => {
       >
         <div
           ref={blackOverlayRef}
-          className="w-screen h-screen absolute top-0 left-0 bg-black z-11 opacity-0"
+          className="w-screen h-screen absolute top-0 left-0 bg-black z-20 opacity-0"
         />
         {/* Background image */}
         <img
@@ -234,7 +285,7 @@ export const Hero = () => {
           ref={abhyudayWrapperRef}
           className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 inline-block"
           style={{
-            zIndex: 12,
+            zIndex: 21,
           }}
         >
           {/* White background */}
@@ -254,8 +305,21 @@ export const Hero = () => {
             ref={abhyudayImageRef}
             src="/abhyuday_new.svg"
             alt="Abhyuday"
-            className="relative z-[2] w-auto h-auto max-w-[90vw]"
+            className="relative z-[5] w-auto h-auto max-w-[70vw]"
           />
+
+          <h1
+            ref={abhyudayTenRef}
+            className="z-[6] absolute left-1/2 text-white text-[150px] leading-none font-bold"
+          >
+            10.0
+          </h1>
+          <p
+            ref={dateRef}
+            className="z-[6] absolute left-1/2 leading-none text-white"
+          >
+            COMING SOON
+          </p>
         </div>
       </div>
 
