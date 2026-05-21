@@ -30,7 +30,7 @@ export const Hero = () => {
       start: "top top",
       end: "+=3000",
       pin: true,
-      markers: true,
+      markers: false,
     });
 
     gsap.to(image, {
@@ -96,7 +96,7 @@ export const Hero = () => {
       ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
       scrollTrigger: {
         trigger: container,
-        start: 350,
+        start: 600,
         end: 900,
         scrub: true,
       },
@@ -118,7 +118,7 @@ export const Hero = () => {
       scrollTrigger: {
         trigger: container,
         start: 300,
-        end: 900,
+        end: 1500,
         scrub: true,
       },
     });
@@ -127,8 +127,8 @@ export const Hero = () => {
       ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
       scrollTrigger: {
         trigger: container,
-        start: 500,
-        end: 900,
+        start: 600,
+        end: 1400,
         scrub: true,
       },
     });
@@ -154,8 +154,8 @@ export const Hero = () => {
       ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
       scrollTrigger: {
         trigger: container,
-        start: 900,
-        end: 1100,
+        start: 1500,
+        end: 2000,
         scrub: true,
       },
     });
@@ -164,8 +164,8 @@ export const Hero = () => {
       ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
       scrollTrigger: {
         trigger: container,
-        start: 1000,
-        end: 1400,
+        start: 1500,
+        end: 2000,
         scrub: true,
       },
     });
@@ -176,8 +176,8 @@ export const Hero = () => {
       ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
       scrollTrigger: {
         trigger: container,
-        start: 1400,
-        end: 1800,
+        start: 2300,
+        end: 3000,
         scrub: true,
       },
     });
