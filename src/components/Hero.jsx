@@ -43,6 +43,7 @@ export const Hero = () => {
 
     gsap.to(image, {
       scale: 1.15,
+      y: -50,
       ease: "power3.out",
       scrollTrigger: {
         trigger: container,
@@ -54,6 +55,7 @@ export const Hero = () => {
 
     gsap.to(leftTreesRef.current, {
       x: -200,
+      y: -50,
       scale: 1.25,
       ease: "power3.out",
       scrollTrigger: {
@@ -65,6 +67,7 @@ export const Hero = () => {
     });
     gsap.to(rightTreesRef.current, {
       x: 200,
+      y: -50,
       scale: 1.25,
       ease: "power3.out",
       scrollTrigger: {
@@ -215,7 +218,7 @@ export const Hero = () => {
         {/* Background image */}
         <img
           ref={heroImageRef}
-          src="/strange-bg-sans-trees.png"
+          src="/strange-bg-sans-trees.jpg"
           alt=""
           style={{
             position: "absolute",
