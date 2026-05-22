@@ -8,6 +8,20 @@ export const LoadingScreen = () => {
   const lineRef = useRef(null);
 
   useEffect(() => {
+    if (isLoading) {
+      // Disable scrolling
+      document.body.style.overflow = "hidden";
+    } else {
+      // Re-enable scrolling
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isLoading]);
+
+  useEffect(() => {
     if (!isLoading) return;
 
     // Auto-hide after 5 seconds (allows fade animation to complete)
@@ -36,13 +50,17 @@ export const LoadingScreen = () => {
       },
     );
 
-    // Fade out the container
+    // Fade out the container and re-enable scrolling when done
     tl.to(
       containerRef.current,
       {
         opacity: 0,
         duration: 1.5,
         ease: "power2.out",
+        onComplete: () => {
+          document.body.style.overflow = "unset";
+          hideLoading();
+        },
       },
       3.2,
     );
@@ -50,7 +68,7 @@ export const LoadingScreen = () => {
     return () => {
       tl.kill();
     };
-  }, [isLoading]);
+  }, [isLoading, hideLoading]);
 
   if (!isLoading) return null;
 

@@ -127,7 +127,7 @@ export const Hero = () => {
         trigger: container,
         start: 300,
         end: 1500,
-        scrub: true,
+        scrub: 1,
       },
     });
     gsap.to(abhyudayBgRef.current, {
@@ -137,7 +137,7 @@ export const Hero = () => {
         trigger: container,
         start: 600,
         end: 1400,
-        scrub: true,
+        scrub: 1,
       },
     });
 
