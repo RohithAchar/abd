@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -18,6 +18,14 @@ export const Hero = () => {
   const abhyudayTenRef = useRef(null);
   const dateRef = useRef(null);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     const container = pinContainerRef.current;
     const image = heroImageRef.current;
@@ -35,7 +43,7 @@ export const Hero = () => {
 
     gsap.to(image, {
       scale: 1.15,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 0,
@@ -47,7 +55,7 @@ export const Hero = () => {
     gsap.to(leftTreesRef.current, {
       x: -200,
       scale: 1.25,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 0,
@@ -58,7 +66,7 @@ export const Hero = () => {
     gsap.to(rightTreesRef.current, {
       x: 200,
       scale: 1.25,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 0,
@@ -70,7 +78,7 @@ export const Hero = () => {
     gsap.to(mainTextRef.current, {
       y: -50,
       opacity: 0,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 0,
@@ -82,7 +90,7 @@ export const Hero = () => {
     gsap.to(kidsRef.current, {
       y: -150,
       scale: 2,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 0,
@@ -93,7 +101,7 @@ export const Hero = () => {
 
     gsap.to(blackOverlayRef.current, {
       opacity: 1,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 600,
@@ -103,8 +111,8 @@ export const Hero = () => {
     });
 
     gsap.set(abhyudayWrapperRef.current, {
-      scale: 80,
-      xPercent: -190,
+      scale: isMobile ? 80 : 150,
+      xPercent: isMobile ? -190 : -270,
       yPercent: -50,
     });
     gsap.set(abhyudayBgRef.current, {
@@ -114,7 +122,7 @@ export const Hero = () => {
     gsap.to(abhyudayWrapperRef.current, {
       scale: 1,
       xPercent: -50,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 300,
@@ -124,7 +132,7 @@ export const Hero = () => {
     });
     gsap.to(abhyudayBgRef.current, {
       opacity: 1,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 600,
@@ -135,7 +143,7 @@ export const Hero = () => {
 
     gsap.set(abhyudayTenRef.current, {
       xPercent: -50,
-      y: -35, // move up
+      y: isMobile ? -35 : -80, // move up
       left: "50%",
       top: "100%",
       opacity: 0,
@@ -151,7 +159,7 @@ export const Hero = () => {
       opacity: 1,
       scale: 1,
       stagger: 1,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 1500,
@@ -161,7 +169,7 @@ export const Hero = () => {
     });
     gsap.to(abhyudayTenRef.current, {
       color: "red", // move down to original position
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 1500,
@@ -173,7 +181,7 @@ export const Hero = () => {
     gsap.to(abhyudayWrapperRef.current, {
       opacity: 0,
       y: 10,
-      ease: "custom,M0,0 C0.25,1 0.5,1 1,1",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: container,
         start: 2300,
@@ -255,18 +263,29 @@ export const Hero = () => {
         {/* Main text */}
         <div
           ref={mainTextRef}
-          className="absolute w-full top-[10%] text-white text-center"
+          className="absolute top-[10%] w-full text-center text-white px-4"
           style={{
             zIndex: 4,
           }}
         >
-          <p className="tracking-wider text-sm">WELCOME TO THE</p>
+          <p className="tracking-[0.25em] text-sm sm:text-sm md:text-base lg:text-lg">
+            WELCOME TO THE
+          </p>
 
-          <h1 className="font-bold text-4xl">
+          <h1
+            className="
+      font-bold
+      leading-none
+      mt-2
+      text-[clamp(2.25rem,5vw,4rem)]
+    "
+          >
             UPSIDE <span>DOWN</span>
           </h1>
 
-          <p className="tracking-wider text-sm">MCA, MSRIT</p>
+          <p className="tracking-[0.25em] mt-2 text-sm sm:text-sm md:text-base lg:text-lg">
+            MCA, MSRIT
+          </p>
         </div>
 
         {/* Kids */}
