@@ -17,6 +17,7 @@ export const Hero = () => {
   const dateRef = useRef(null);
   const collegeRef = useRef(null);
   const abWrapperRef = useRef(null);
+  const creepyBgRef = useRef(null);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -36,7 +37,7 @@ export const Hero = () => {
     ScrollTrigger.create({
       trigger: container,
       start: "top top",
-      end: "+=5000",
+      end: isMobile ? "+=5000" : "+=5000",
       pin: true,
       markers: false,
     });
@@ -113,19 +114,76 @@ export const Hero = () => {
       },
     });
 
-    gsap.set([versionRef.current, dateRef.current, collegeRef.current], {
+    gsap.set(".metadata-inner", {
+      yPercent: 120,
       clipPath: "inset(0 0 100% 0)",
-      y: 40,
+      opacity: 1,
     });
-    gsap.to([versionRef.current, dateRef.current, collegeRef.current], {
+
+    gsap.to(".metadata-inner", {
+      yPercent: 0,
       clipPath: "inset(0 0 0% 0)",
-      y: 0,
-      stagger: 0.15,
-      ease: "power3.out",
+
+      stagger: {
+        each: 0.08,
+      },
+
+      ease: "power4.out",
+
       scrollTrigger: {
         trigger: container,
-        start: 2000,
-        end: 3000,
+        start: 1900,
+        end: 2800,
+        scrub: true,
+      },
+    });
+
+    const letterOffsets = [
+      -10, // A
+      25, // B
+      -18, // H
+      12, // Y
+      -30, // U
+      18, // D
+      -15, // A
+      28, // Y
+    ];
+
+    gsap.set(".ab-letter", {
+      yPercent: (i) => letterOffsets[i],
+      opacity: 1,
+    });
+
+    gsap.to(".ab-letter", {
+      yPercent: 0,
+      xPercent: 0,
+      opacity: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: container,
+        start: 1700,
+        end: 2500,
+        scrub: true,
+      },
+    });
+
+    gsap.set(creepyBgRef.current, {
+      clipPath: "inset(100% 0 0 0)",
+      yPercent: 8,
+      scale: 1,
+    });
+
+    gsap.to(creepyBgRef.current, {
+      clipPath: "inset(0% 0 0 0)",
+      yPercent: 0,
+      scale: 1,
+
+      ease: "none",
+
+      scrollTrigger: {
+        trigger: container,
+        start: 1800,
+        end: 3200,
         scrub: true,
       },
     });
@@ -136,16 +194,13 @@ export const Hero = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden relative" style={{ position: "relative" }}>
-      {/* Absolute background */}
-
+    <div>
       <div
         ref={pinContainerRef}
         className="relative"
         style={{
-          height: "100vh",
+          height: "100dvh",
           width: "100%",
-          overflow: "hidden",
         }}
       >
         <div
@@ -243,34 +298,449 @@ export const Hero = () => {
           />
         </div>
         <div
-          className="absolute inset-0 bg-black"
+          className="absolute inset-0 overflow-hidden bg-black"
           style={{
             zIndex: 0,
           }}
         >
+          {/* Background image */}
+          <img
+            ref={creepyBgRef}
+            src="/creepy-background.jpg"
+            alt=""
+            className="
+      creepy-bg
+      absolute
+      inset-0
+      w-full
+      h-full
+      object-cover
+      brightness-[1.2]
+      contrast-[1]
+    "
+          />
+
+          {/* Dark overlay */}
+          {/* <div className="absolute inset-0 bg-black/25 z-[1]" /> */}
+
+          {/* Red atmospheric glow */}
+          <div className="absolute inset-0 z-[2] pointer-events-none">
+            <div
+              className="
+        absolute
+        top-1/2
+        left-1/2
+
+        w-[320px]
+        md:w-[900px]
+
+        h-[220px]
+        md:h-[500px]
+
+        -translate-x-1/2
+        -translate-y-1/2
+
+        bg-red-600/15
+
+        blur-[70px]
+        md:blur-[140px]
+      "
+            />
+          </div>
+
+          {/* Scanlines */}
+          <div className="scanlines absolute inset-0 z-[3] pointer-events-none opacity-60 md:opacity-100" />
+
+          {/* Corner HUD */}
+          <div
+            className="
+      absolute
+
+      top-4
+      md:top-10
+
+      left-4
+      md:left-10
+
+      z-[4]
+
+      text-red-500
+      font-mono
+      uppercase
+
+      tracking-[0.12em]
+      md:tracking-[0.2em]
+
+      text-[8px]
+      sm:text-[9px]
+      md:text-sm
+
+      max-w-[140px]
+      md:max-w-none
+    "
+          >
+            <div className="flex items-center gap-2 mb-2 md:mb-3">
+              <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500 animate-pulse" />
+              REC
+            </div>
+
+            <p>Transmission 07</p>
+
+            <p className="mt-1">Theta Network [LIVE]</p>
+
+            <p className="mt-1 text-red-300 break-words">
+              Feed: ABHYUDAY_SIGNAL_1986
+            </p>
+          </div>
+
+          {/* Right HUD */}
+          <div
+            className="
+      absolute
+
+      top-4
+      md:top-10
+
+      right-4
+      md:right-10
+
+      z-[4]
+
+      text-right
+      font-mono
+      uppercase
+
+      tracking-[0.12em]
+      md:tracking-[0.2em]
+
+      text-[8px]
+      sm:text-[9px]
+      md:text-sm
+
+      max-w-[120px]
+      md:max-w-none
+    "
+          >
+            <p>UPSIDE DOWN FREQUENCY</p>
+
+            <p className="text-lg md:text-2xl mt-1 md:mt-2 text-red-500">
+              88.6 MHz
+            </p>
+
+            <p className="mt-1 md:mt-2">CHANNEL v1.0</p>
+          </div>
+
+          {/* Main content */}
           <div
             ref={abWrapperRef}
-            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white"
+            className="
+      absolute
+      top-1/2
+      left-1/2
+      -translate-x-1/2
+      -translate-y-1/2
+
+      z-[5]
+
+      w-full
+
+      px-4
+      md:px-6
+
+      text-center
+      text-white
+    "
           >
-            <h1 className="text-center text-[clamp(3rem,10vw,10rem)] font-bold text-white leading-none tracking-tight text-center">
-              ABHYUDAY
+            {/* Subtitle */}
+            <p
+              className="
+        text-red-500
+        uppercase
+
+        tracking-[0.28em]
+        md:tracking-[0.5em]
+
+        text-[10px]
+        md:text-sm
+
+        mb-4
+        md:mb-6
+
+        font-mono
+      "
+            >
+              ENTER THE UPSIDE DOWN
+            </p>
+
+            {/* Main title */}
+            <h1
+              className="
+        flex
+        justify-center
+        flex-nowrap
+        whitespace-nowrap
+
+        text-[clamp(3.8rem,18vw,16rem)]
+
+        font-black
+        uppercase
+        leading-[0.82]
+
+        tracking-[-0.06em]
+
+        text-white
+        select-none
+      "
+              style={{
+                fontFamily:
+                  'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif',
+              }}
+            >
+              {"ABHYUDAY".split("").map((letter, index) => (
+                <span key={index} className="ab-letter inline-block">
+                  {letter}
+                </span>
+              ))}
             </h1>
-            <div className="flex items-center justify-between text-sm md:text-base">
-              <div className="overflow-hidden">
-                <p ref={versionRef}>v10.0</p>
-              </div>
-              <div className="overflow-hidden">
-                <p ref={dateRef}>October 10, 2023</p>
-              </div>
-              <div className="overflow-hidden">
-                <p ref={collegeRef}>MSRIT</p>
+
+            {/* Signal */}
+            <div className="mt-4 md:mt-6 flex justify-center">
+              <div className="w-[88vw] md:w-[70vw] max-w-[900px] h-[1px] bg-red-500 relative overflow-hidden">
+                <div className="absolute inset-0 waveform" />
               </div>
             </div>
+
+            {/* Signal text */}
+            <p
+              className="
+        mt-4
+        md:mt-5
+
+        text-red-500
+        uppercase
+
+        tracking-[0.28em]
+        md:tracking-[0.4em]
+
+        text-[10px]
+        md:text-sm
+
+        font-mono
+      "
+            >
+              SIGNAL DETECTED
+            </p>
+
+            {/* Metadata */}
+            <div
+              className="
+    mt-10
+    md:mt-14
+
+    w-full
+    max-w-6xl
+    mx-auto
+  "
+            >
+              {/* MOBILE */}
+
+              <div className="flex flex-col gap-3 md:hidden">
+                {[
+                  {
+                    label: "LOCATION",
+                    value: "MSRIT CAMPUS",
+                  },
+                  {
+                    label: "TRANSMISSION",
+                    value: "ACTIVE",
+                  },
+                  {
+                    label: "STATUS",
+                    value: "OPEN",
+                  },
+                  {
+                    label: "DATE",
+                    value: "OCT 10 1986",
+                  },
+                  {
+                    label: "CHANNEL",
+                    value: "v1.0",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+          metadata-item
+          overflow-hidden
+
+          border
+          border-red-500/10
+
+          bg-black/20
+
+          px-4
+          py-3
+        "
+                  >
+                    <div
+                      className="
+            metadata-inner
+
+            flex
+            items-center
+            justify-between
+
+            gap-4
+          "
+                    >
+                      <p
+                        className="
+              text-[9px]
+              uppercase
+
+              tracking-[0.22em]
+
+              text-red-500/60
+
+              font-mono
+
+              shrink-0
+            "
+                      >
+                        {item.label}
+                      </p>
+
+                      <p
+                        className="
+              text-[11px]
+
+              tracking-[0.08em]
+
+              text-white
+
+              font-mono
+
+              text-right
+            "
+                      >
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* DESKTOP */}
+
+              <div
+                className="
+      hidden
+      md:grid
+
+      grid-cols-5
+
+      gap-6
+
+      text-left
+      font-mono
+    "
+              >
+                {[
+                  {
+                    label: "Location",
+                    value: "MSRIT CAMPUS",
+                  },
+                  {
+                    label: "Transmission",
+                    value: "ACTIVE",
+                  },
+                  {
+                    label: "Status",
+                    value: "OPEN",
+                  },
+                  {
+                    label: "Date",
+                    value: "OCT 10 1986",
+                  },
+                  {
+                    label: "Channel",
+                    value: "v1.0",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+          metadata-item
+          overflow-hidden
+        "
+                  >
+                    <div className="metadata-inner">
+                      <p
+                        className="
+              text-red-500/60
+              text-[10px]
+              uppercase
+              tracking-[0.3em]
+            "
+                      >
+                        {item.label}
+                      </p>
+
+                      <p
+                        className="
+              text-white
+              text-lg
+              tracking-[0.15em]
+              mt-2
+            "
+                      >
+                        {item.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <button
+              className="
+        mt-10
+        md:mt-14
+
+        border
+        border-red-500
+
+        px-8
+        md:px-12
+
+        py-3
+        md:py-4
+
+        text-red-500
+
+        uppercase
+
+        tracking-[0.24em]
+        md:tracking-[0.4em]
+
+        font-mono
+
+        text-[10px]
+        md:text-sm
+
+        hover:bg-red-500
+        hover:text-black
+
+        transition-all
+        duration-300
+      "
+            >
+              ENTER EXPERIENCE
+            </button>
           </div>
         </div>
       </div>
-
-      <div style={{ height: "1px" }} />
     </div>
   );
 };
