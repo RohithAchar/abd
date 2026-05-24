@@ -375,14 +375,30 @@ export const Hero = ({ incrementImagesLoaded }) => {
           {/* Main content viewport block */}
           <div
             ref={abWrapperRef}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[5] w-full px-4 md:px-6 text-center text-white"
+            className="
+    absolute
+    inset-x-0
+    top-[72px]
+    md:top-1/2
+    md:-translate-y-1/2
+    z-[5]
+    px-4 md:px-6
+    text-center
+    text-white
+    flex
+    flex-col
+    items-center
+    max-h-screen
+    overflow-y-auto
+    md:overflow-visible
+  "
           >
-            <p className="text-red-500 uppercase tracking-[0.28em] md:tracking-[0.5em] text-[10px] md:text-sm mb-4 md:mb-6 font-mono">
+            <p className="mt-12 md:mt-0 text-red-500 uppercase tracking-[0.22em] md:tracking-[0.5em] text-[9px] md:text-sm mb-3 md:mb-6 font-mono">
               ENTER THE UPSIDE DOWN
             </p>
 
             <h1
-              className="flex justify-center flex-nowrap whitespace-nowrap text-[clamp(3.8rem,18vw,16rem)] font-black uppercase leading-[0.82] tracking-[-0.06em] text-white select-none"
+              className="flex justify-center flex-nowrap whitespace-nowrap text-[clamp(2.9rem,15vw,16rem)] font-black uppercase leading-[0.82] tracking-[-0.06em] text-white select-none"
               style={{
                 fontFamily:
                   'Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif',
@@ -396,18 +412,18 @@ export const Hero = ({ incrementImagesLoaded }) => {
             </h1>
 
             {/* Oscilloscope/Signal Bar */}
-            <div className="mt-4 md:mt-6 flex justify-center">
+            <div className="mt-3 md:mt-6 flex justify-center w-full">
               <div className="w-[88vw] md:w-[70vw] max-w-[900px] h-[1px] bg-red-500 relative overflow-hidden">
                 <div className="absolute inset-0 waveform" />
               </div>
             </div>
 
-            <p className="mt-4 md:mt-5 text-red-500 uppercase tracking-[0.28em] md:tracking-[0.4em] text-[10px] md:text-sm font-mono">
+            <p className="mt-3 md:mt-5 text-red-500 uppercase tracking-[0.22em] md:tracking-[0.4em] text-[9px] md:text-sm font-mono">
               SIGNAL DETECTED
             </p>
 
             {/* Metadata Cluster wrapper */}
-            <div className="mt-10 md:mt-14 w-full max-w-6xl mx-auto">
+            <div className="mt-5 md:mt-14 w-full max-w-6xl mx-auto">
               {/* Mobile View matrix */}
               <div className="flex flex-col gap-3 md:hidden">
                 {[
@@ -425,6 +441,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
                       <p className="text-[9px] uppercase tracking-[0.22em] text-red-500/60 font-mono shrink-0">
                         {item.label}
                       </p>
+
                       <p className="text-[11px] tracking-[0.08em] text-white font-mono text-right">
                         {item.value}
                       </p>
@@ -447,6 +464,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
                       <p className="text-red-500/60 text-[10px] uppercase tracking-[0.3em]">
                         {item.label}
                       </p>
+
                       <p className="text-white text-lg tracking-[0.15em] mt-2">
                         {item.value}
                       </p>
@@ -457,7 +475,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
             </div>
 
             {/* Interactive CTA */}
-            <button className="mt-10 md:mt-14 border border-red-500 px-8 md:px-12 py-3 md:py-4 text-red-500 uppercase tracking-[0.24em] md:tracking-[0.4em] font-mono text-[10px] md:text-sm hover:bg-red-500 hover:text-black transition-all duration-300">
+            <button className="mt-5 md:mt-14 border border-red-500 px-8 md:px-12 py-3 md:py-4 text-red-500 uppercase tracking-[0.24em] md:tracking-[0.4em] font-mono text-[10px] md:text-sm hover:bg-red-500 hover:text-black transition-all duration-300">
               ENTER EXPERIENCE
             </button>
           </div>
