@@ -4,7 +4,7 @@ import gsap from "gsap";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Hero = () => {
+export const Hero = ({ incrementImagesLoaded }) => {
   const pinContainerRef = useRef(null);
   const heroImageRef = useRef(null);
   const leftTreesRef = useRef(null);
@@ -234,6 +234,7 @@ export const Hero = () => {
           <img
             ref={heroImageRef}
             src="/hero-bg.jpg"
+            onLoad={() => incrementImagesLoaded()}
             alt=""
             style={{
               position: "absolute",
@@ -246,6 +247,7 @@ export const Hero = () => {
           />
 
           <img
+            onLoad={() => incrementImagesLoaded()}
             ref={leftTreesRef}
             src="/trees-left.png"
             alt=""
@@ -261,6 +263,7 @@ export const Hero = () => {
           />
 
           <img
+            onLoad={() => incrementImagesLoaded()}
             ref={rightTreesRef}
             src="/trees-right.png"
             alt=""
@@ -293,6 +296,7 @@ export const Hero = () => {
           </div>
 
           <img
+            onLoad={() => incrementImagesLoaded()}
             ref={kidsRef}
             src="/strange-kids.png"
             alt="Kids"
@@ -307,6 +311,7 @@ export const Hero = () => {
           style={{ zIndex: 0 }}
         >
           <img
+            onLoad={() => incrementImagesLoaded()}
             ref={creepyBgRef}
             src="/creepy-background.jpg"
             alt=""
