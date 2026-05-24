@@ -233,7 +233,7 @@ export const Hero = () => {
         >
           <img
             ref={heroImageRef}
-            src="/hero-bg.png"
+            src="/hero-bg.jpg"
             alt=""
             style={{
               position: "absolute",
