@@ -10,47 +10,61 @@ const events = [
     title: "Hackathon",
     subtitle: "CODE. BREAK. BUILD.",
     desc: "48 hours to build the impossible.",
-    image: "/events/hackathon.jpg",
+    image: "/assets/Dustin.webp",
   },
   {
     id: "02",
     title: "Tech Events",
     subtitle: "LOGIC. STRATEGY. SPEED.",
     desc: "Test your skills. Solve. Outwit.",
-    image: "/events/tech.jpg",
+    image: "/assets/Eleven.webp",
   },
   {
     id: "03",
     title: "Workshops",
     subtitle: "LEARN. EXPLORE. EVOLVE.",
     desc: "Hands-on sessions by experts.",
-    image: "/events/workshop.jpg",
+    image: "/assets/Lucas.webp",
   },
   {
     id: "04",
     title: "Open Mic",
     subtitle: "YOUR VOICE. THEIR EARS.",
     desc: "Speak your truth.",
-    image: "/events/mic.jpg",
+    image: "/assets/Will.webp",
   },
   {
     id: "05",
     title: "Fun Events",
     subtitle: "GAMES. CHAOS. MEMORIES.",
     desc: "Dive into the upside down.",
-    image: "/events/fun.jpg",
+    image: "/assets/Fun.webp",
   },
   {
     id: "06",
     title: "Mystery Event",
     subtitle: "NOT EVERYTHING IS MEANT TO BE REVEALED.",
     desc: "Something is coming.",
-    image: "/events/mystery.jpg",
+    image: "/assets/Mystery.webp",
   },
 ];
 
 const EventsSection = () => {
   useEffect(() => {
+    gsap.utils.toArray(".event-image").forEach((image) => {
+      gsap.to(image, {
+        yPercent: 12,
+
+        ease: "none",
+
+        scrollTrigger: {
+          trigger: image.parentElement,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
     gsap.set(".event-card", {
       opacity: 0,
       y: 120,
