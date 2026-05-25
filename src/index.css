@@ -193,6 +193,15 @@ body {
   }
 }
 
+.heading-line,
+.heading-sub {
+  will-change: transform, clip-path, letter-spacing;
+
+  transform: translateZ(0);
+
+  backface-visibility: hidden;
+}
+
 /* ---------- PERFORMANCE ---------- */
 
 video,
