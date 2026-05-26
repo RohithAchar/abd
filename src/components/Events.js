@@ -17,7 +17,11 @@ export const events = [
       "Decision of judges is final and binding."
     ],
     whatsapp: "https://chat.whatsapp.com/your-link-1",
-    register: "https://forms.gle/your-link-1"
+    register: "https://forms.gle/your-link-1",
+    cardTitle: "Hackathon",
+    cardSubtitle: "CODE. BREAK. BUILD.",
+    cardDesc: "48 hours to build the impossible.",
+    cardImage: "/assets/Dustin.webp"
   },
   {
     id: 2,
@@ -37,7 +41,11 @@ export const events = [
       "Originality and accessibility scores count for 40% of the total."
     ],
     whatsapp: "https://chat.whatsapp.com/your-link-2",
-    register: "https://forms.gle/your-link-2"
+    register: "https://forms.gle/your-link-2",
+    cardTitle: "Tech Events",
+    cardSubtitle: "LOGIC. STRATEGY. SPEED.",
+    cardDesc: "Test your skills. Solve. Outwit.",
+    cardImage: "/assets/Eleven.webp"
   },
   {
     id: 3,
@@ -57,7 +65,11 @@ export const events = [
       "Participants must register 15 minutes before start time or forfeit their slot."
     ],
     whatsapp: "https://chat.whatsapp.com/your-link-3",
-    register: "https://forms.gle/your-link-3"
+    register: "https://forms.gle/your-link-3",
+    cardTitle: "Workshops",
+    cardSubtitle: "LEARN. EXPLORE. EVOLVE.",
+    cardDesc: "Hands-on sessions by experts.",
+    cardImage: "/assets/Lucas.webp"
   },
   {
     id: 4,
@@ -77,7 +89,11 @@ export const events = [
       "Plagiarism results in immediate disqualification."
     ],
     whatsapp: "https://chat.whatsapp.com/your-link-4",
-    register: "https://forms.gle/your-link-4"
+    register: "https://forms.gle/your-link-4",
+    cardTitle: "Open Mic",
+    cardSubtitle: "YOUR VOICE. THEIR EARS.",
+    cardDesc: "Speak your truth.",
+    cardImage: "/assets/Will.webp"
   },
   {
     id: 5,
@@ -97,7 +113,11 @@ export const events = [
       "All decisions by the organising team are final."
     ],
     whatsapp: "https://chat.whatsapp.com/your-link-5",
-    register: "https://forms.gle/your-link-5"
+    register: "https://forms.gle/your-link-5",
+    cardTitle: "Fun Events",
+    cardSubtitle: "GAMES. CHAOS. MEMORIES.",
+    cardDesc: "Dive into the upside down.",
+    cardImage: "/assets/Fun.webp"
   },
   {
     id: 6,
@@ -117,7 +137,11 @@ export const events = [
       "Fastest completion wins in case of tie."
     ],
     whatsapp: "https://chat.whatsapp.com/your-link-6",
-    register: "https://forms.gle/your-link-6"
+    register: "https://forms.gle/your-link-6",
+    cardTitle: "Mystery Event",
+    cardSubtitle: "NOT EVERYTHING IS MEANT TO BE REVEALED.",
+    cardDesc: "Something is coming.",
+    cardImage: "/assets/Mystery.webp"
   },
   {
     id: 7,

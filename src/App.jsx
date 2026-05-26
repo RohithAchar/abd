@@ -165,12 +165,7 @@ function App() {
       {/* APP ALWAYS MOUNTS */}
 
       <div
-        className={`
-          transition-opacity
-          duration-700
-
-          ${isLoading ? "opacity-0" : "opacity-100"}
-        `}
+        className={`transition-opacity duration-700 ${isLoading ? "opacity-0" : "opacity-100"}`}
       >
         <Routes>
           <Route
@@ -181,13 +176,7 @@ function App() {
 
                 {/* <section
                   ref={sectionRef}
-                  className="
-                    h-screen
-                    overflow-hidden
-                    flex
-                    justify-center
-                    relative
-                  "
+                  className="h-screen overflow-hidden flex justify-center relative"
                 >
                   <ChristmasLights
                     active={isScrolling}
@@ -195,17 +184,7 @@ function App() {
                   />
 
                   <div
-                    className="
-                      cards
-                      relative
-                      w-full
-                      h-screen
-                      lg:flex
-                      lg:flex-row
-                      gap-10
-                      lg:px-20
-                      lg:pt-20
-                    "
+                    className="cards relative w-full h-screen lg:flex lg:flex-row gap-10 lg:px-20 lg:pt-20"
                   >
                     <ProfileCard id={1} name="Lucas" image={lucas} />
 
@@ -243,37 +222,12 @@ function App() {
 
       {isLoading && (
         <div
-          className="
-            fixed
-            inset-0
-
-            z-[9999]
-
-            flex
-            flex-col
-            items-center
-            justify-center
-
-            bg-black
-
-            text-red-500
-          "
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-red-500"
         >
           {/* Loading Text */}
 
           <p
-            className="
-              mb-6
-
-              text-xs
-              md:text-sm
-
-              uppercase
-
-              tracking-[0.45em]
-
-              font-mono
-            "
+            className="mb-6 text-xs md:text-sm uppercase tracking-[0.45em] font-mono"
           >
             Loading...
           </p>
@@ -281,33 +235,10 @@ function App() {
           {/* Progress Bar */}
 
           <div
-            className="
-              relative
-
-              w-[220px]
-              md:w-[320px]
-
-              h-[2px]
-
-              bg-red-500/20
-
-              overflow-hidden
-            "
+            className="relative w-[220px] md:w-[320px] h-[2px] bg-red-500/20 overflow-hidden"
           >
             <div
-              className="
-                absolute
-                left-0
-                top-0
-
-                h-full
-
-                bg-red-500
-
-                transition-all
-                duration-300
-                ease-out
-              "
+              className="absolute left-0 top-0 h-full bg-red-500 transition-all duration-300 ease-out"
               style={{
                 width: `${progress}%`,
               }}
@@ -317,18 +248,7 @@ function App() {
           {/* Percentage */}
 
           <p
-            className="
-              mt-5
-
-              text-[10px]
-              md:text-xs
-
-              tracking-[0.3em]
-
-              font-mono
-
-              text-white/40
-            "
+            className="mt-5 text-[10px] md:text-xs tracking-[0.3em] font-mono text-white/40"
           >
             {Math.floor(progress)}%
           </p>

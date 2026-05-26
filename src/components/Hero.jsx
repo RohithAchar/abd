@@ -355,14 +355,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
           <div className="absolute inset-0 z-[2] pointer-events-none">
             <div
               ref={redGlowRef}
-              className="
-                absolute top-1/3 left-1/2
-                w-[320px] md:w-[900px]
-                h-[220px] md:h-[500px]
-                -translate-x-1/2 -translate-y-1/2
-                bg-red-600/15
-                blur-[70px] md:blur-[140px]
-              "
+              className="absolute top-1/3 left-1/2 w-[320px] md:w-[900px] h-[220px] md:h-[500px] -translate-x-1/2 -translate-y-1/2 bg-red-600/15 blur-[70px] md:blur-[140px]"
             />
           </div>
 
@@ -372,11 +365,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
           {/* Corner HUD - Left */}
           <div
             ref={leftHudRef}
-            className="
-              absolute top-4 md:top-10 left-4 md:left-10 z-[4]
-              text-red-500 font-mono uppercase text-[8px] sm:text-[9px] md:text-sm
-              tracking-[0.12em] md:tracking-[0.2em] max-w-[140px] md:max-w-none
-            "
+            className="absolute top-4 md:top-10 left-4 md:left-10 z-[4] text-red-500 font-mono uppercase text-[8px] sm:text-[9px] md:text-sm tracking-[0.12em] md:tracking-[0.2em] max-w-[140px] md:max-w-none"
           >
             <div className="flex items-center gap-2 mb-2 md:mb-3">
               <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500 animate-pulse" />
@@ -392,11 +381,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
           {/* Right HUD */}
           <div
             ref={rightHudRef}
-            className="
-              absolute top-4 md:top-10 right-4 md:right-10 z-[4]
-              text-right font-mono uppercase text-[8px] sm:text-[9px] md:text-sm
-              tracking-[0.12em] md:tracking-[0.2em] max-w-[120px] md:max-w-none
-            "
+            className="absolute top-4 md:top-10 right-4 md:right-10 z-[4] text-right font-mono uppercase text-[8px] sm:text-[9px] md:text-sm tracking-[0.12em] md:tracking-[0.2em] max-w-[120px] md:max-w-none"
           >
             <p>UPSIDE DOWN FREQUENCY</p>
             <p className="text-lg md:text-2xl mt-1 md:mt-2 text-red-500">
@@ -408,23 +393,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
           {/* Main content viewport block */}
           <div
             ref={abWrapperRef}
-            className="
-    absolute
-    inset-x-0
-    top-[72px]
-    md:top-1/2
-    md:-translate-y-1/2
-    z-[5]
-    px-4 md:px-6
-    text-center
-    text-white
-    flex
-    flex-col
-    items-center
-    max-h-screen
-    overflow-y-auto
-    md:overflow-visible
-  "
+            className="absolute inset-x-0 top-[72px] md:top-1/2 md:-translate-y-1/2 z-[5] px-4 md:px-6 text-center text-white flex flex-col items-center max-h-screen overflow-y-auto md:overflow-visible"
           >
             <p
               ref={supRef}
@@ -443,22 +412,10 @@ export const Hero = ({ incrementImagesLoaded }) => {
               {"ABHYUDAY".split("").map((letter, index) => (
                 <span
                   key={index}
-                  className="
-      letter-mask
-
-      inline-block
-
-
-
-      leading-[0.82]
-    "
+                  className="letter-mask inline-block leading-[0.82]"
                 >
                   <span
-                    className="
-        ab-letter
-
-        block
-      "
+                    className="ab-letter block"
                   >
                     {letter}
                   </span>
