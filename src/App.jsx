@@ -27,7 +27,7 @@ import EventsSection from "./components/EventSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const totalImages = 5;
+const totalImages = 4;
 
 function App() {
   const [numOfImagesLoaded, setNumOfImagesLoaded] = useState(0);

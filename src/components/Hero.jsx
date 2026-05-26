@@ -14,6 +14,9 @@ export const Hero = ({ incrementImagesLoaded }) => {
   const revealWrapperRef = useRef(null);
   const abWrapperRef = useRef(null);
   const creepyBgRef = useRef(null);
+  const metadataRef = useRef(null);
+  const ctaRef = useRef(null);
+  const supRef = useRef(null);
 
   // New specific refs to guarantee the fade-out targets the elements perfectly
   const leftHudRef = useRef(null);
@@ -91,37 +94,67 @@ export const Hero = ({ incrementImagesLoaded }) => {
     // Metadata Reveal
     gsap.set(".metadata-inner", {
       yPercent: 120,
+      opacity: 0,
       clipPath: "inset(0 0 100% 0)",
     });
 
     gsap.to(".metadata-inner", {
+      opacity: 1,
       yPercent: 0,
       clipPath: "inset(0 0 0% 0)",
       stagger: { each: 0.08 },
       ease: "power4.out",
       scrollTrigger: {
         trigger: container,
-        start: 1900,
-        end: 2800,
+        start: 2500,
+        end: 4200,
         scrub: true,
       },
     });
+
+    gsap.set(
+      [supRef.current, metadataRef.current, redGlowRef.current, ctaRef.current],
+      {
+        opacity: 0,
+      },
+    );
+
+    gsap.to(
+      [supRef.current, redGlowRef.current, metadataRef.current, ctaRef.current],
+      {
+        opacity: 1,
+        ease: "none",
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: container,
+          start: 2000,
+          end: 3000,
+          scrub: true,
+        },
+      },
+    );
 
     // Letters animation
-    const letterOffsets = [-10, 25, -18, 12, -30, 18, -15, 28];
-    gsap.set(".ab-letter", { yPercent: (i) => letterOffsets[i] });
+    // gsap.set(".ab-letter", {
+    //   y: "120%",
+    // });
 
-    gsap.to(".ab-letter", {
-      yPercent: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        start: 1700,
-        end: 2500,
-        scrub: true,
-      },
-    });
+    // gsap.to(".ab-letter", {
+    //   y: "0%",
 
+    //   stagger: {
+    //     each: 0.08,
+    //   },
+
+    //   ease: "power4.out",
+
+    //   scrollTrigger: {
+    //     trigger: container,
+    //     start: 1700,
+    //     end: 2500,
+    //     scrub: true,
+    //   },
+    // });
     // Creepy Background clip mask reveal
     gsap.set(creepyBgRef.current, {
       clipPath: "inset(100% 0 0 0)",
@@ -310,20 +343,20 @@ export const Hero = ({ incrementImagesLoaded }) => {
           className="absolute inset-0 overflow-hidden bg-black"
           style={{ zIndex: 0 }}
         >
-          <img
+          {/* <img
             onLoad={() => incrementImagesLoaded()}
             ref={creepyBgRef}
             src="/creepy-background.jpg"
             alt=""
             className="absolute inset-0 w-full h-full object-cover brightness-[1.2] contrast-[1]"
-          />
+          /> */}
 
           {/* Red atmospheric glow */}
           <div className="absolute inset-0 z-[2] pointer-events-none">
             <div
               ref={redGlowRef}
               className="
-                absolute top-1/2 left-1/2
+                absolute top-1/3 left-1/2
                 w-[320px] md:w-[900px]
                 h-[220px] md:h-[500px]
                 -translate-x-1/2 -translate-y-1/2
@@ -393,7 +426,10 @@ export const Hero = ({ incrementImagesLoaded }) => {
     md:overflow-visible
   "
           >
-            <p className="mt-12 md:mt-0 text-red-500 uppercase tracking-[0.22em] md:tracking-[0.5em] text-[9px] md:text-sm mb-3 md:mb-6 font-mono">
+            <p
+              ref={supRef}
+              className="mt-12 md:mt-0 text-red-500 uppercase tracking-[0.22em] md:tracking-[0.5em] text-[9px] md:text-sm mb-3 md:mb-6 font-mono"
+            >
               ENTER THE UPSIDE DOWN
             </p>
 
@@ -405,25 +441,53 @@ export const Hero = ({ incrementImagesLoaded }) => {
               }}
             >
               {"ABHYUDAY".split("").map((letter, index) => (
-                <span key={index} className="ab-letter inline-block">
-                  {letter}
+                <span
+                  key={index}
+                  className="
+      letter-mask
+
+      inline-block
+
+
+
+      leading-[0.82]
+    "
+                >
+                  <span
+                    className="
+        ab-letter
+
+        block
+      "
+                  >
+                    {letter}
+                  </span>
                 </span>
               ))}
             </h1>
 
             {/* Oscilloscope/Signal Bar */}
-            <div className="mt-3 md:mt-6 flex justify-center w-full">
+            <div
+              ref={supRef}
+              className="mt-3 md:mt-6 flex justify-center w-full"
+            >
               <div className="w-[88vw] md:w-[70vw] max-w-[900px] h-[1px] bg-red-500 relative overflow-hidden">
                 <div className="absolute inset-0 waveform" />
               </div>
             </div>
 
-            <p className="mt-3 md:mt-5 text-red-500 uppercase tracking-[0.22em] md:tracking-[0.4em] text-[9px] md:text-sm font-mono">
+            <p
+              ref={supRef}
+              className="mt-3 md:mt-5 text-red-500 uppercase tracking-[0.22em] md:tracking-[0.4em] text-[9px] md:text-sm font-mono"
+            >
               SIGNAL DETECTED
             </p>
 
             {/* Metadata Cluster wrapper */}
-            <div className="mt-5 md:mt-14 w-full max-w-6xl mx-auto">
+            <div
+              ref={metadataRef}
+              className="mt-5 md:mt-14 w-full max-w-6xl mx-auto"
+            >
               {/* Mobile View matrix */}
               <div className="flex flex-col gap-3 md:hidden">
                 {[
@@ -475,7 +539,10 @@ export const Hero = ({ incrementImagesLoaded }) => {
             </div>
 
             {/* Interactive CTA */}
-            <button className="mt-5 md:mt-14 border border-red-500 px-8 md:px-12 py-3 md:py-4 text-red-500 uppercase tracking-[0.24em] md:tracking-[0.4em] font-mono text-[10px] md:text-sm hover:bg-red-500 hover:text-black transition-all duration-300">
+            <button
+              ref={ctaRef}
+              className="mt-5 md:mt-14 border border-red-500 px-8 md:px-12 py-3 md:py-4 text-red-500 uppercase tracking-[0.24em] md:tracking-[0.4em] font-mono text-[10px] md:text-sm hover:bg-red-500 hover:text-black transition-all duration-300"
+            >
               ENTER EXPERIENCE
             </button>
           </div>
