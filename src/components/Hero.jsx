@@ -135,26 +135,26 @@ export const Hero = ({ incrementImagesLoaded }) => {
     );
 
     // Letters animation
-    // gsap.set(".ab-letter", {
-    //   y: "120%",
-    // });
+    gsap.set(".ab-letter", {
+      y: "-120%",
+    });
 
-    // gsap.to(".ab-letter", {
-    //   y: "0%",
+    gsap.to(".ab-letter", {
+      y: "0%",
 
-    //   stagger: {
-    //     each: 0.08,
-    //   },
+      stagger: {
+        each: 0.08,
+      },
 
-    //   ease: "power4.out",
+      ease: "power4.out",
 
-    //   scrollTrigger: {
-    //     trigger: container,
-    //     start: 1700,
-    //     end: 2500,
-    //     scrub: true,
-    //   },
-    // });
+      scrollTrigger: {
+        trigger: container,
+        start: 1800,
+        end: 2500,
+        scrub: true,
+      },
+    });
     // Creepy Background clip mask reveal
     gsap.set(creepyBgRef.current, {
       clipPath: "inset(100% 0 0 0)",
@@ -414,11 +414,7 @@ export const Hero = ({ incrementImagesLoaded }) => {
                   key={index}
                   className="letter-mask inline-block leading-[0.82]"
                 >
-                  <span
-                    className="ab-letter block"
-                  >
-                    {letter}
-                  </span>
+                  <span className="ab-letter block">{letter}</span>
                 </span>
               ))}
             </h1>
