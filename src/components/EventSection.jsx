@@ -12,20 +12,20 @@ const EventsSection = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    gsap.utils.toArray(".event-image").forEach((image) => {
-      gsap.to(image, {
-        yPercent: 12,
+    // gsap.utils.toArray(".event-image").forEach((image) => {
+    //   gsap.to(image, {
+    //     yPercent: 12,
 
-        ease: "none",
+    //     ease: "none",
 
-        scrollTrigger: {
-          trigger: image.parentElement,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    });
+    //     scrollTrigger: {
+    //       trigger: image.parentElement,
+    //       start: "top bottom",
+    //       end: "bottom top",
+    //       scrub: true,
+    //     },
+    //   });
+    // });
     gsap.set(".event-card", {
       opacity: 0,
       y: 120,
@@ -49,26 +49,26 @@ const EventsSection = () => {
       },
     });
 
-    gsap.fromTo(
-      ".event-image",
-      {
-        scale: 1.15,
-      },
-      {
-        scale: 1,
+    // gsap.fromTo(
+    //   ".event-image",
+    //   {
+    //     scale: 1.15,
+    //   },
+    //   {
+    //     scale: 1,
 
-        stagger: 0.08,
+    //     stagger: 0.08,
 
-        duration: 2,
+    //     duration: 2,
 
-        ease: "power3.out",
+    //     ease: "power3.out",
 
-        scrollTrigger: {
-          trigger: ".events-wrapper",
-          start: "top 80%",
-        },
-      },
-    );
+    //     scrollTrigger: {
+    //       trigger: ".events-wrapper",
+    //       start: "top 80%",
+    //     },
+    //   },
+    // );
 
     gsap.set(".heading-line", {
       yPercent: 120,
@@ -115,24 +115,18 @@ const EventsSection = () => {
   }, []);
 
   return (
-    <section
-      className="events-wrapper relative overflow-hidden bg-black px-4 md:px-8 xl:px-16 py-20 md:py-28"
-    >
+    <section className="events-wrapper relative overflow-hidden bg-black px-4 md:px-8 xl:px-16 py-20 md:py-28">
       {/* Background glow */}
 
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[180px]"
-        />
+        <div className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[180px]" />
       </div>
 
       {/* Header */}
 
       <div className="events-heading relative z-[2] text-center mb-14 md:mb-20">
         <div className="overflow-hidden">
-          <p
-            className="heading-sub text-red-500 uppercase tracking-[0.5em] text-[10px] md:text-xs font-mono mb-5"
-          >
+          <p className="heading-sub text-red-500 uppercase tracking-[0.5em] text-[10px] md:text-xs font-mono mb-5">
             EVENTS
           </p>
         </div>
@@ -166,9 +160,7 @@ const EventsSection = () => {
 
       {/* Grid */}
 
-      <div
-        className="relative z-[2] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-7"
-      >
+      <div className="relative z-[2] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-7">
         {gridEvents.map((event) => (
           <div
             key={event.id}
@@ -190,9 +182,7 @@ const EventsSection = () => {
 
               {/* Number */}
 
-              <div
-                className="absolute top-4 left-4 border border-red-500/30 bg-black/60 px-3 py-2"
-              >
+              <div className="absolute top-4 left-4 border border-red-500/30 bg-black/60 px-3 py-2">
                 <p
                   className="text-red-500 text-2xl md:text-3xl leading-none font-black"
                   style={{
@@ -212,9 +202,7 @@ const EventsSection = () => {
             {/* Content */}
 
             <div className="p-5 md:p-6">
-              <p
-                className="text-red-500 uppercase tracking-[0.25em] text-[10px] md:text-xs font-mono mb-4"
-              >
+              <p className="text-red-500 uppercase tracking-[0.25em] text-[10px] md:text-xs font-mono mb-4">
                 {event.cardSubtitle}
               </p>
 
@@ -228,9 +216,7 @@ const EventsSection = () => {
                 {event.cardTitle}
               </h3>
 
-              <p
-                className="mt-5 text-sm md:text-base leading-relaxed text-white/60 max-w-[26ch]"
-              >
+              <p className="mt-5 text-sm md:text-base leading-relaxed text-white/60 max-w-[26ch]">
                 {event.cardDesc}
               </p>
 
@@ -244,9 +230,7 @@ const EventsSection = () => {
                   Enter Event
                 </button>
 
-                <div
-                  className="text-red-500 text-3xl md:text-4xl leading-none transition-transform duration-300 group-hover:translate-x-1"
-                >
+                <div className="text-red-500 text-3xl md:text-4xl leading-none transition-transform duration-300 group-hover:translate-x-1">
                   ›
                 </div>
               </div>
@@ -258,9 +242,7 @@ const EventsSection = () => {
 
             {/* Glow */}
 
-            <div
-              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            >
+            <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
               <div className="absolute inset-0 bg-red-500/5" />
             </div>
           </div>
@@ -272,9 +254,7 @@ const EventsSection = () => {
       <div className="relative z-[2] mt-16 md:mt-24 text-center">
         <div className="mx-auto mb-5 h-px w-40 bg-red-500/20" />
 
-        <p
-          className="text-red-500/70 uppercase tracking-[0.35em] text-[10px] md:text-xs font-mono"
-        >
+        <p className="text-red-500/70 uppercase tracking-[0.35em] text-[10px] md:text-xs font-mono">
           Stay Tuned. Stay Curious.
         </p>
       </div>

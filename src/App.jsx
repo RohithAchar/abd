@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
 import { Hero } from "./components/Hero";
 import EventPage from "./components/EventPage";
+import Navbar from "./components/Navbar";
 
 import { ProfileCard } from "./components/ProfileCard";
 import { ChristmasLights } from "./components/ChristmasLights";
@@ -163,6 +164,8 @@ function App() {
   return (
     <>
       {/* APP ALWAYS MOUNTS */}
+
+      <Navbar />
 
       <div
         className={`transition-opacity duration-700 ${isLoading ? "opacity-0" : "opacity-100"}`}

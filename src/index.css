@@ -193,6 +193,30 @@ body {
   }
 }
 
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  8% { opacity: 0.75; }
+  10% { opacity: 1; }
+  22% { opacity: 0.6; }
+  24% { opacity: 1; }
+  46% { opacity: 0.8; }
+  48% { opacity: 1; }
+  72% { opacity: 0.65; }
+  74% { opacity: 1; }
+}
+
+.hud-flicker {
+  animation: flicker 4.5s infinite;
+}
+
+.hud-flicker-slow {
+  animation: flicker 7s infinite;
+}
+
+.hud-flicker-fast {
+  animation: flicker 2.8s infinite;
+}
+
 .heading-line,
 .heading-sub {
   will-change: transform, clip-path, letter-spacing;

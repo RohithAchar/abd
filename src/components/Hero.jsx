@@ -367,13 +367,13 @@ export const Hero = ({ incrementImagesLoaded }) => {
             ref={leftHudRef}
             className="absolute top-4 md:top-10 left-4 md:left-10 z-[4] text-red-500 font-mono uppercase text-[8px] sm:text-[9px] md:text-sm tracking-[0.12em] md:tracking-[0.2em] max-w-[140px] md:max-w-none"
           >
-            <div className="flex items-center gap-2 mb-2 md:mb-3">
+            <div className="flex items-center gap-2 mb-2 md:mb-3 hud-flicker-fast">
               <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-red-500 animate-pulse" />
               REC
             </div>
-            <p>Transmission 07</p>
-            <p className="mt-1">Theta Network [LIVE]</p>
-            <p className="mt-1 text-red-300 break-words">
+            <p className="hud-flicker">Transmission 07</p>
+            <p className="mt-1 hud-flicker-slow">Theta Network [LIVE]</p>
+            <p className="mt-1 text-red-300 break-words hud-flicker">
               Feed: ABHYUDAY_SIGNAL_1986
             </p>
           </div>
@@ -383,11 +383,11 @@ export const Hero = ({ incrementImagesLoaded }) => {
             ref={rightHudRef}
             className="absolute top-4 md:top-10 right-4 md:right-10 z-[4] text-right font-mono uppercase text-[8px] sm:text-[9px] md:text-sm tracking-[0.12em] md:tracking-[0.2em] max-w-[120px] md:max-w-none"
           >
-            <p>UPSIDE DOWN FREQUENCY</p>
-            <p className="text-lg md:text-2xl mt-1 md:mt-2 text-red-500">
+            <p className="hud-flicker-slow">UPSIDE DOWN FREQUENCY</p>
+            <p className="text-lg md:text-2xl mt-1 md:mt-2 text-red-500 hud-flicker">
               88.6 MHz
             </p>
-            <p className="mt-1 md:mt-2">CHANNEL v1.0</p>
+            <p className="mt-1 md:mt-2 hud-flicker-fast">CHANNEL v1.0</p>
           </div>
 
           {/* Main content viewport block */}
@@ -500,6 +500,12 @@ export const Hero = ({ incrementImagesLoaded }) => {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className="fixed bottom-8 right-8 z-[9999] animate-bounce">
+        <svg className="w-5 h-5 text-red-500/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
       </div>
     </div>
   );
